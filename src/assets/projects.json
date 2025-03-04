@@ -1,0 +1,53 @@
+{
+  "frontend": [
+    {
+      "img": "https://miro.medium.com/v2/resize:fit:1400/1*CQy4P7pFzvnOJ19GGvt6xQ.gif",
+      "github": "https://github.com/Jagadishgollapalli/Swiggy_Clone",
+      "live": "https://swiggyapiclonepersonal.netlify.app/"
+    },
+    {
+      "img": "https://media3.giphy.com/media/ciuSFYQ2hXQj2mupFG/giphy.gif?cid=6c09b9524lmt0xqs65v982whjlawf2n099y515amx8b2gtz2&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g",
+      "github": "https://github.com/Jagadishgollapalli/ReduxToolKit-RTK-Music-App",
+      "live": "https://mangools.com/404"
+    },
+    {
+      "img": "https://i.gifer.com/9Aug.gif",
+      "github": "https://github.com/Jagadishgollapalli/emart-reactjs",
+      "live": "https://emart-reactjs.netlify.app/"
+    }
+  ],
+  "backend": [
+    {
+      "img": "https://miro.medium.com/v2/resize:fit:960/1*-NHAilcl_GQKq-QDr7_Ngg.gif",
+      "github": "https://github.com/Jagadishgollapalli/Microservices_SpringBoot",
+      "live": "https://mangools.com/404"
+    },
+    {
+      "img": "https://miro.medium.com/v2/resize:fit:800/1*TntSTtfqhk-VmD1AZYjIMQ.gif",
+      "github": "https://github.com/Jagadishgollapalli/SpringDocker",
+      "live": "https://mangools.com/404"
+    },
+    {
+      "img": "https://camo.githubusercontent.com/7373263843fd6f1063c808942d551f0f055a0c9339a0fbc9133b6beb88c1644c/687474703a2f2f6d656469612e6465767072692e636f6d2f74696e72652f74696e72652e676966",
+      "github": "https://github.com/Jagadishgollapalli/UrlShortener-Backend",
+      "live": "https://mangools.com/404"
+    }
+  ],
+  "css": [
+    {
+      "img": "https://wpdean.com/wp-content/uploads/2024/05/how-to-use-tailwind.jpg",
+      "github": "https://github.com/Jagadishgollapalli/react-tailwind",
+      "live": "https://mangools.com/404"
+    },
+    {
+      "img": "https://uploads.sitepoint.com/wp-content/uploads/2013/03/1501598563featured-getting-started-sass.jpg",
+      "github": "https://github.com/Jagadishgollapalli/react-sass",
+      "live": "https://mangools.com/404"
+    },
+    {
+      "img": "https://www.samcomtechnobrains.com/wp-content/uploads/2024/01/materialUI.webp",
+      "github": "https://github.com/Jagadishgollapalli/React-MUI-Project",
+      "live": "https://mangools.com/404"
+    }
+  ]
+}
