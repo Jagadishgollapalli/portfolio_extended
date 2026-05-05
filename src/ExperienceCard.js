@@ -1,3 +1,4 @@
+import { MapPin, Calendar } from "lucide-react";
 import RevealSection from "./RevealSection";
 import SectionHeading from "./SectionHeading";
 
@@ -33,7 +34,7 @@ const roles = [
     company: "Juhomi Ltd",
     location: "India",
     title: "Java Developer",
-    period: "June 2021 – December 2022",
+    period: "June 2019 – December 2022",
     highlights: [
       "Worked across agile delivery with frontend and DevOps partners; used Java 8 lambdas, functional interfaces, and streams for maintainability.",
       "Implemented ORM with Hibernate and Spring Data JPA; secured ~80% of endpoints with JWT.",
@@ -44,50 +45,77 @@ const roles = [
 
 const ExperienceCards = () => {
   return (
-    <section id="experience" className="py-20 sm:py-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <section
+      id="experience"
+      className="relative py-24 sm:py-28 px-4 sm:px-6 border-t border-surface-border/60"
+    >
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-accent/[0.03] via-transparent to-transparent pointer-events-none"
+      />
+      <div className="relative max-w-6xl mx-auto">
         <RevealSection>
           <SectionHeading
-            step="03 — Experience"
-            title="Where I've shipped"
+            eyebrow="EXPERIENCE"
+            title="Where I've"
+            highlight="shipped"
             subtitle="Recent roles emphasizing microservices, React product UI, Postgres, AWS, and operational tooling."
           />
         </RevealSection>
 
-        <div className="relative space-y-6 md:space-y-8 pl-0 md:pl-10">
+        <div className="relative space-y-5 md:space-y-6 md:pl-12">
           <div
-            className="hidden md:block absolute left-[11px] top-3 bottom-3 w-px bg-gradient-to-b from-accent/70 via-surface-border to-surface-border"
             aria-hidden
+            className="hidden md:block absolute left-[14px] top-2 bottom-2 w-px bg-gradient-to-b from-accent/70 via-accent/15 to-transparent"
           />
 
-          {roles.map((job) => (
-            <RevealSection key={`${job.company}-${job.period}`}>
-              <article className="relative rounded-2xl card-premium p-6 sm:p-8 md:pl-10 motion-safe:transition hover:border-accent/35 hover:shadow-lift">
+          {roles.map((job, idx) => (
+            <RevealSection key={`${job.company}-${idx}`}>
+              <article className="group relative rounded-2xl border border-surface-border/70 bg-surface-card/40 backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-accent/40 hover:bg-surface-card/60">
                 <span
-                  className="hidden md:flex absolute -left-[21px] top-8 h-3 w-3 rounded-full border-2 border-surface bg-accent shadow-glow"
                   aria-hidden
-                />
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                  <div>
-                    <h3 className="font-display font-bold text-2xl text-ink tracking-tight">
-                      {job.company}
-                      <span className="font-sans font-normal text-ink-muted text-base font-medium">
-                        {" "}
-                        · {job.location}
-                      </span>
-                    </h3>
-                    <p className="text-accent font-semibold text-lg mt-2">{job.title}</p>
-                  </div>
-                  <span className="inline-flex self-start rounded-lg border border-surface-border/90 bg-surface/50 px-3.5 py-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-ink-muted">
-                    {job.period}
+                  className="hidden md:flex absolute -left-[37px] top-8 h-6 w-6 items-center justify-center rounded-full border border-accent/40 bg-black"
+                >
+                  <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_2px_rgba(251,191,36,0.7)]" />
+                </span>
+
+                <div className="flex items-center gap-2 text-xs text-accent">
+                  <span className="font-mono font-semibold tracking-[0.18em] uppercase">
+                    0{idx + 1}
+                  </span>
+                  <span className="h-px w-8 bg-accent/40" />
+                  <span className="font-mono uppercase tracking-[0.18em] text-ink-subtle">
+                    Role
                   </span>
                 </div>
-                <ul className="mt-6 space-y-4 text-base sm:text-lg text-ink-muted leading-relaxed">
+
+                <div className="mt-4 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl md:text-[1.65rem] text-ink tracking-tight leading-tight">
+                      {job.company}
+                    </h3>
+                    <p className="text-accent font-semibold text-base md:text-lg mt-1.5">
+                      {job.title}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-surface-border bg-surface-inset/70 px-3.5 py-1.5 font-mono text-[11px] sm:text-xs uppercase tracking-[0.16em] text-ink-muted">
+                      <Calendar className="h-3.5 w-3.5 text-accent" />
+                      {job.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-xs text-ink-subtle">
+                      <MapPin className="h-3.5 w-3.5 text-accent/80" />
+                      {job.location}
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="mt-6 space-y-3.5 text-base text-ink-muted leading-relaxed">
                   {job.highlights.map((line, hi) => (
-                    <li key={`${job.company}-${hi}`} className="flex gap-3.5">
+                    <li key={`${job.company}-${hi}`} className="flex gap-3">
                       <span
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-glow"
                         aria-hidden
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(251,191,36,0.5)]"
                       />
                       <span>{line}</span>
                     </li>
@@ -98,18 +126,23 @@ const ExperienceCards = () => {
           ))}
         </div>
 
-        <RevealSection>
-          <div className="rounded-2xl card-premium p-6 sm:p-8">
-            <h3 className="font-display font-semibold text-2xl text-ink tracking-tight mb-2">
-              Education
-            </h3>
-            <div className="h-px w-10 bg-gradient-to-r from-accent to-transparent mb-6" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <RevealSection className="mt-10">
+          <div className="rounded-2xl border border-surface-border/70 bg-surface-card/40 backdrop-blur-md p-7 md:p-9">
+            <div className="flex items-center gap-2 text-xs text-accent">
+              <span className="font-mono font-semibold tracking-[0.18em] uppercase">
+                Edu
+              </span>
+              <span className="h-px w-8 bg-accent/40" />
+              <span className="font-mono uppercase tracking-[0.18em] text-ink-subtle">
+                Education
+              </span>
+            </div>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
               <div>
-                <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
                   2023 – 2024
                 </p>
-                <p className="font-semibold text-ink text-lg mt-2">
+                <p className="font-display font-bold text-ink text-xl mt-2 tracking-tight">
                   M.S. Applied Computer Science
                 </p>
                 <p className="text-base text-ink-muted mt-1">
@@ -117,11 +150,11 @@ const ExperienceCards = () => {
                 </p>
               </div>
               <div>
-                <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-accent">
-                  2017 – 2021
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                  2015 – 2019
                 </p>
-                <p className="font-semibold text-ink text-lg mt-2">
-                  B.Tech, Electrical & Electronics Engineering
+                <p className="font-display font-bold text-ink text-xl mt-2 tracking-tight">
+                  B.Tech, Electrical &amp; Electronics
                 </p>
                 <p className="text-base text-ink-muted mt-1">JNTU University</p>
               </div>

@@ -1,43 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { FaGithub } from "react-icons/fa";
-import { BiLogoNetlify } from "react-icons/bi";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import data from "./assets/projects.json";
 import RevealSection from "./RevealSection";
 import SectionHeading from "./SectionHeading";
 
 const categories = [
+  { name: "All", key: "all" },
   { name: "Frontend", key: "frontend" },
   { name: "Backend", key: "backend" },
-  { name: "UI / styling", key: "css" },
+  { name: "UI / Styling", key: "css" },
 ];
+
+const labelFor = {
+  frontend: "Frontend",
+  backend: "Backend",
+  css: "UI / Styling",
+};
 
 function hasLiveDemo(url) {
   return typeof url === "string" && url.length > 0 && !url.includes("mangools.com");
 }
 
 const TabbedGallery = () => {
-  const [activeTab, setActiveTab] = useState("frontend");
+  const [activeTab, setActiveTab] = useState("all");
+
+  const items = useMemo(() => {
+    if (activeTab === "all") {
+      return [
+        ...data.frontend.map((p) => ({ ...p, category: "frontend" })),
+        ...data.backend.map((p) => ({ ...p, category: "backend" })),
+        ...data.css.map((p) => ({ ...p, category: "css" })),
+      ];
+    }
+    return (data[activeTab] || []).map((p) => ({ ...p, category: activeTab }));
+  }, [activeTab]);
 
   return (
     <section
       id="projects"
-      className="relative py-20 sm:py-24 px-4 sm:px-6 bg-surface-alt/50 border-y border-surface-border/80"
+      className="relative py-24 sm:py-28 px-4 sm:px-6 border-t border-surface-border/60"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent pointer-events-none" />
-      <div className="max-w-6xl mx-auto relative">
+      <div
+        aria-hidden
+        className="absolute inset-0 section-grid pointer-events-none"
+      />
+      <div className="relative max-w-6xl mx-auto">
         <RevealSection>
           <SectionHeading
-            align="center"
-            step="04 — Selected work"
-            title="Projects"
-            subtitle="Experiments and learning across React, Spring Boot, and styling stacks—source on GitHub; live demos when deployed."
+            eyebrow="PORTFOLIO"
+            title="Selected"
+            highlight="Works"
+            subtitle="A mix of full-stack experiments, frontends, and styling stacks—source on GitHub; live demos when deployed."
           />
         </RevealSection>
 
         <RevealSection>
           <div
-            className="flex flex-wrap justify-center gap-2 p-1.5 rounded-full border border-surface-border/90 bg-surface/60 backdrop-blur-sm shadow-innerline max-w-max mx-auto"
+            className="flex flex-wrap justify-center gap-1 p-1.5 rounded-full border border-surface-border/70 bg-surface-card/50 backdrop-blur-md max-w-max mx-auto"
             role="tablist"
             aria-label="Project categories"
           >
@@ -50,9 +70,9 @@ const TabbedGallery = () => {
                   role="tab"
                   aria-selected={active}
                   className={[
-                    "relative px-6 py-3 rounded-full text-sm font-semibold tracking-tight transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-alt",
+                    "px-5 sm:px-6 py-2.5 rounded-full text-sm font-semibold tracking-tight transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                     active
-                      ? "bg-accent text-slate-950 shadow-glow"
+                      ? "bg-accent text-black shadow-glow"
                       : "text-ink-muted hover:text-ink hover:bg-white/[0.04]",
                   ].join(" ")}
                   onClick={() => setActiveTab(category.key)}
@@ -64,66 +84,67 @@ const TabbedGallery = () => {
           </div>
         </RevealSection>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-          {data[activeTab].map((project, index) => (
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {items.map((project, index) => (
             <RevealSection key={`${activeTab}-${project.title}-${index}`}>
-              <article className="group h-full flex flex-col rounded-2xl card-premium overflow-hidden motion-safe:transition duration-300 hover:border-accent/35 hover:shadow-lift hover:-translate-y-1 motion-reduce:hover:translate-y-0 p-0">
+              <article className="group h-full flex flex-col rounded-2xl border border-surface-border/70 bg-surface-card/40 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-accent/40 hover:-translate-y-1.5 hover:shadow-lift">
                 <div className="relative overflow-hidden aspect-[16/10] bg-surface-inset">
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-60 z-[1] pointer-events-none" />
                   <img
                     src={project.img}
                     alt=""
-                    className="relative z-0 w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   />
-                  <div className="absolute inset-0 z-[2] bg-depth/0 group-hover:bg-depth/50 motion-safe:transition-colors flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 motion-reduce:opacity-0 motion-reduce:group-hover:opacity-100">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="bg-accent text-slate-950 p-3 rounded-full hover:bg-accent-hover motion-safe:transition-colors shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                      aria-label={`${project.title} on GitHub`}
-                    >
-                      <FaGithub className="text-xl" />
-                    </a>
-                    {hasLiveDemo(project.live) && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bg-white text-depth p-3 rounded-full hover:bg-sky-100 motion-safe:transition-colors shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                        aria-label={`${project.title} live demo`}
-                      >
-                        <BiLogoNetlify className="text-xl" />
-                      </a>
-                    )}
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-black/70 backdrop-blur-md px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+                    {labelFor[project.category] || "Project"}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="absolute top-3 right-3 font-display font-extrabold text-3xl text-transparent [-webkit-text-stroke:1px_rgba(251,191,36,0.55)] tracking-tighter"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <div className="p-5 md:p-6 flex flex-col flex-1 border-t border-surface-border/50">
-                  <h3 className="font-display font-semibold text-xl text-ink tracking-tight">
+
+                <div className="p-5 md:p-6 flex flex-col flex-1 border-t border-surface-border/60">
+                  <h3 className="font-display font-bold text-xl text-ink tracking-tight">
                     {project.title}
                   </h3>
-                  <p className="font-mono text-xs sm:text-sm text-accent/90 mt-2 uppercase tracking-wider">
+                  <p className="font-mono text-[11px] sm:text-xs text-accent mt-2 uppercase tracking-[0.18em]">
                     {project.stack}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-4 pt-2 mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-base font-semibold text-ink-muted hover:text-accent transition-colors"
-                    >
-                      <FaGithub /> Code
-                    </a>
-                    {hasLiveDemo(project.live) ? (
+
+                  <div className="mt-5 flex items-center justify-between gap-3 pt-4 border-t border-surface-border/40 mt-auto">
+                    <div className="flex flex-wrap items-center gap-3">
                       <a
-                        href={project.live}
+                        href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-base font-semibold text-ink-muted hover:text-accent transition-colors"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-muted hover:text-accent transition-colors"
                       >
-                        <ExternalLink className="h-4 w-4" /> Demo
+                        <FaGithub /> Code
                       </a>
-                    ) : null}
+                      {hasLiveDemo(project.live) ? (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-muted hover:text-accent transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" /> Demo
+                        </a>
+                      ) : null}
+                    </div>
+                    <a
+                      href={hasLiveDemo(project.live) ? project.live : project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.title} details`}
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-black"
+                    >
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
                   </div>
                 </div>
               </article>
@@ -136,10 +157,10 @@ const TabbedGallery = () => {
             href="https://github.com/jagadishgollapalli"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-accent text-slate-950 px-8 py-4 text-base font-semibold shadow-glow motion-safe:transition hover:bg-accent-hover hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-alt"
+            className="btn-gold"
           >
-            View more on GitHub
-            <ExternalLink className="h-4 w-4 opacity-80" />
+            View More Projects
+            <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
       </div>

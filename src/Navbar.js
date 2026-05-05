@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io5";
 
 const navlinks = [
-  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#services", label: "Services" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#testimonials", label: "Testimonials" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -34,79 +34,88 @@ export default function Navbar() {
   return (
     <header
       className={[
-        "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-out",
+        "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ease-out",
         scrolled
-          ? "bg-surface-card/88 backdrop-blur-2xl backdrop-saturate-150 border-b border-surface-border/90 shadow-soft"
+          ? "bg-black/75 backdrop-blur-xl border-b border-surface-border/70"
           : "bg-transparent border-b border-transparent",
       ].join(" ")}
     >
-      <nav className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 py-3.5 sm:py-4">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 py-4">
         <a
-          href="https://github.com/jagadishgollapalli"
-          target="_blank"
-          rel="noreferrer"
-          className={`group flex items-center gap-3 rounded-xl px-2 py-1.5 -ml-2 text-ink hover:text-accent transition-colors ${linkFocus}`}
-          aria-label="GitHub profile"
+          href="#home"
+          className={`group flex items-center gap-2.5 rounded-xl px-1 py-1 -ml-1 ${linkFocus}`}
+          aria-label="Home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-inset/90 border border-surface-border/80 text-accent shadow-innerline motion-safe:transition group-hover:border-accent/30">
-            <FaGithub className="text-lg" />
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 ring-1 ring-accent/30 text-accent">
+            <Sparkles className="h-4 w-4" strokeWidth={2.4} />
           </span>
-          <span className="hidden sm:flex flex-col items-start leading-none">
-            <span className="font-display font-semibold text-base tracking-tight">
-              jagadishgollapalli
-            </span>
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-ink-subtle mt-0.5">
-              GitHub
-            </span>
+          <span className="font-display font-extrabold text-xl tracking-tight text-ink">
+            Jagadish<span className="text-accent">.</span>
           </span>
         </a>
 
-        <div className="hidden lg:flex items-center rounded-full border border-surface-border/70 bg-surface-inset/45 backdrop-blur-md p-1 pl-1.5 shadow-innerline">
+        <div className="hidden lg:flex items-center rounded-full border border-surface-border/70 bg-surface-card/40 backdrop-blur-md p-1 pl-1.5">
           {navlinks.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className={`px-4 py-2.5 rounded-full text-sm font-medium text-ink-muted hover:text-ink hover:bg-white/[0.04] motion-safe:transition ${linkFocus}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium text-ink-muted hover:text-ink hover:bg-white/[0.04] transition ${linkFocus}`}
             >
               {label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+          <a
+            href="https://github.com/jagadishgollapalli"
+            target="_blank"
+            rel="noreferrer"
+            className={`hidden sm:inline-flex p-2.5 rounded-xl text-ink-muted hover:text-ink hover:bg-white/[0.05] transition ${linkFocus}`}
+            aria-label="GitHub"
+          >
+            <FaGithub className="text-lg" />
+          </a>
           <a
             href="https://www.linkedin.com/in/g-jagadish954186205/"
             target="_blank"
             rel="noreferrer"
-            className={`p-2.5 rounded-xl text-sky-400 hover:text-sky-300 hover:bg-white/[0.04] motion-safe:transition ${linkFocus}`}
+            className={`hidden sm:inline-flex p-2.5 rounded-xl text-ink-muted hover:text-ink hover:bg-white/[0.05] transition ${linkFocus}`}
             aria-label="LinkedIn"
           >
-            <FaLinkedin className="text-xl" />
+            <FaLinkedin className="text-lg" />
           </a>
           <a
             href="https://www.youtube.com/@RetailTraderHub"
             target="_blank"
             rel="noreferrer"
-            className={`p-2.5 rounded-xl text-red-400 hover:text-red-300 hover:bg-white/[0.04] motion-safe:transition ${linkFocus}`}
+            className={`hidden md:inline-flex p-2.5 rounded-xl text-ink-muted hover:text-ink hover:bg-white/[0.05] transition ${linkFocus}`}
             aria-label="YouTube"
           >
-            <IoLogoYoutube className="text-xl" />
+            <IoLogoYoutube className="text-lg" />
           </a>
-        </div>
 
-        <button
-          type="button"
-          className={`lg:hidden p-2.5 rounded-xl text-ink hover:bg-surface-inset/90 border border-transparent hover:border-surface-border/60 ${linkFocus}`}
-          aria-expanded={open}
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <a
+            href="#contact"
+            className={`ml-1 hidden sm:inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/[0.07] px-5 py-2 text-sm font-semibold text-accent hover:bg-accent hover:text-black transition-all ${linkFocus}`}
+          >
+            Hire Me
+          </a>
+
+          <button
+            type="button"
+            className={`lg:hidden p-2.5 rounded-xl text-ink hover:bg-white/[0.05] border border-transparent hover:border-surface-border/70 ${linkFocus}`}
+            aria-expanded={open}
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div className="lg:hidden border-t border-surface-border/90 bg-surface-card/95 backdrop-blur-2xl px-4 pb-5 shadow-soft">
+        <div className="lg:hidden border-t border-surface-border/70 bg-black/90 backdrop-blur-2xl px-4 pb-5">
           <div className="flex flex-col pt-3">
             {navlinks.map(({ href, label }) => (
               <a
@@ -118,24 +127,13 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
-            <div className="flex gap-6 pt-5 font-mono text-sm uppercase tracking-wider">
-              <a
-                href="https://www.linkedin.com/in/g-jagadish954186205/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-sky-400"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://www.youtube.com/@RetailTraderHub"
-                target="_blank"
-                rel="noreferrer"
-                className="text-red-400"
-              >
-                YouTube
-              </a>
-            </div>
+            <a
+              href="#contact"
+              onClick={closeMenu}
+              className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-black px-6 py-3 text-sm font-semibold hover:bg-accent-hover transition"
+            >
+              Hire Me
+            </a>
           </div>
         </div>
       )}

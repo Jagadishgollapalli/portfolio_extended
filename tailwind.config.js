@@ -4,69 +4,79 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
-        display: ["Sora", "system-ui", "sans-serif"],
-        mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+        sans: ['"Plus Jakarta Sans"', "Inter", "system-ui", "sans-serif"],
+        display: ['"Plus Jakarta Sans"', "Inter", "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       fontSize: {
-        display: [
-          "3.125rem",
-          { lineHeight: "1.08", letterSpacing: "-0.03em" },
-        ],
-        "display-lg": [
-          "4.25rem",
-          { lineHeight: "1.05", letterSpacing: "-0.035em" },
-        ],
+        display: ["3.25rem", { lineHeight: "1.04", letterSpacing: "-0.035em" }],
+        "display-lg": ["4.5rem", { lineHeight: "1.02", letterSpacing: "-0.04em" }],
+        "display-xl": ["6rem", { lineHeight: "1", letterSpacing: "-0.045em" }],
       },
       colors: {
-        depth: {
-          DEFAULT: "#020617",
-          raised: "#0f172a",
-        },
         ink: {
-          DEFAULT: "#f1f5f9",
-          muted: "#94a3b8",
-          subtle: "#64748b",
+          DEFAULT: "#fafafa",
+          muted: "#a3a3a3",
+          subtle: "#737373",
+          dim: "#525252",
         },
         surface: {
-          DEFAULT: "#060b14",
-          alt: "#0a1328",
-          card: "#0c1629",
-          inset: "#111f3a",
-          border: "#1e3a5f",
+          DEFAULT: "#000000",
+          raised: "#0a0a0a",
+          card: "#0d0d0d",
+          inset: "#141414",
+          alt: "#0a0a0a",
+          border: "#262626",
         },
         accent: {
-          DEFAULT: "#38bdf8",
-          hover: "#7dd3fc",
-          muted: "#0ea5e9",
-          soft: "rgba(56, 189, 248, 0.14)",
+          DEFAULT: "#fbbf24",
+          hover: "#fcd34d",
+          deep: "#f59e0b",
+          soft: "rgba(251, 191, 36, 0.12)",
+          glow: "rgba(251, 191, 36, 0.35)",
         },
       },
       backgroundImage: {
-        mesh:
-          "radial-gradient(ellipse 120% 70% at 50% -35%, rgb(30 58 138 / 0.45), transparent 55%), radial-gradient(ellipse 90% 60% at 100% -10%, rgb(56 189 248 / 0.1), transparent 50%), radial-gradient(ellipse 70% 50% at -10% 60%, rgb(59 130 246 / 0.12), transparent 45%)",
-        "fine-grid":
-          "linear-gradient(to right, rgb(56 189 248 / 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgb(56 189 248 / 0.06) 1px, transparent 1px)",
+        "gold-grid":
+          "linear-gradient(to right, rgba(251, 191, 36, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(251, 191, 36, 0.05) 1px, transparent 1px)",
+        "gold-radial":
+          "radial-gradient(ellipse 90% 60% at 50% 0%, rgba(251, 191, 36, 0.08), transparent 60%)",
+        "gold-spotlight":
+          "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(251, 191, 36, 0.18), transparent 65%)",
+        "gold-stroke":
+          "linear-gradient(135deg, rgba(251, 191, 36, 0.45), rgba(251, 191, 36, 0) 60%)",
       },
       backgroundSize: {
-        grid: "52px 52px",
+        grid: "44px 44px",
+        "grid-lg": "72px 72px",
       },
       boxShadow: {
-        soft: "0 4px 24px -4px rgb(0 0 0 / 0.55)",
+        soft: "0 8px 30px -10px rgba(0, 0, 0, 0.7)",
         lift:
-          "0 16px 48px -12px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(56 189 248 / 0.07)",
-        glow: "0 0 56px -8px rgb(56 189 248 / 0.3)",
+          "0 22px 60px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(251, 191, 36, 0.08)",
+        glow: "0 0 50px -8px rgba(251, 191, 36, 0.45)",
+        ring: "inset 0 0 0 1px rgba(251, 191, 36, 0.18)",
         innerline:
-          "inset 0 1px 0 0 rgb(255 255 255 / 0.06), inset 0 0 0 1px rgb(56 189 248 / 0.04)",
+          "inset 0 1px 0 0 rgba(255, 255, 255, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.03)",
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "0%": { opacity: "0", transform: "translateY(18px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "pulse-ring": {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.55" },
+          "50%": { transform: "scale(1.08)", opacity: "0.85" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
         "fade-up": "fade-up 0.7s ease-out forwards",
+        "pulse-ring": "pulse-ring 3s ease-in-out infinite",
+        "marquee": "marquee 40s linear infinite",
       },
     },
   },

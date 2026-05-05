@@ -1,92 +1,99 @@
-import heroPhoto from "./images/me2.png";
+import { ArrowRight, Sparkles, Download } from "lucide-react";
 import RevealSection from "./RevealSection";
 
 const stats = [
-  {
-    value: "4+",
-    label: "Years shipping full-stack systems in production",
-  },
-  {
-    value: "End-to-end",
-    label: "APIs, data models, React UIs, and cloud deployments",
-  },
-  {
-    value: "Scale & UX",
-    label: "Performance, observability, and clear user flows",
-  },
+  { value: "6+", label: "Years shipping production systems" },
+  { value: "End-to-end", label: "APIs, UIs, data, and cloud" },
+  { value: "Java · Go · React", label: "Cross-stack engineering" },
 ];
 
 export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[88vh] flex flex-col justify-center pt-28 pb-20 px-4 sm:px-6"
+      className="relative isolate min-h-[100svh] flex flex-col justify-center pt-32 pb-24 px-4 sm:px-6"
     >
-      <div className="max-w-6xl mx-auto w-full">
+      <div
+        aria-hidden
+        className="absolute inset-0 section-grid pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[55vh] bg-gold-radial pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute left-1/2 -translate-x-1/2 top-24 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-accent/20 blur-[120px] opacity-60 pointer-events-none"
+      />
+
+      <div className="relative max-w-6xl mx-auto w-full">
         <RevealSection>
-          <div className="relative overflow-hidden rounded-3xl min-h-[440px] md:min-h-[500px] bg-surface-inset shadow-lift ring-1 ring-surface-border/80">
-            <div
-              className="absolute inset-0 bg-cover bg-left sm:bg-[left_20%_center] md:bg-[left_25%_center] scale-[1.04] motion-safe:transition-transform motion-safe:duration-[20s] motion-safe:ease-out hover:scale-100 motion-reduce:scale-100"
-              style={{ backgroundImage: `url(${heroPhoto})` }}
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-l from-depth/90 via-depth/32 from-[28%] to-transparent"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-depth/40 via-transparent to-depth/25"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-l from-accent/20 to-transparent to-50%"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/[0.07] pointer-events-none"
-              aria-hidden
-            />
-
-            <div className="absolute top-5 left-5 sm:top-7 sm:left-7 z-20">
-              <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-white/55">
-                <span className="text-accent/90">01</span>
-                <span className="mx-2 text-white/35">/</span>
-                <span>Introduction</span>
-              </p>
-            </div>
-
-            <div className="relative z-10 flex min-h-[440px] md:min-h-[500px] items-center justify-end p-8 sm:p-11 md:p-16">
-              <div className="w-full max-w-xl text-right text-white pl-12 sm:pl-20 md:pl-28 md:max-w-2xl border-r border-accent/25 pr-2 sm:pr-5 [text-shadow:0_2px_40px_rgb(0_0_0_/_50%)]">
-                <p className="font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-accent mb-5">
-                  Full stack developer
-                </p>
-                <h1 className="font-display font-extrabold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-display-lg leading-[1.03]">
-                  Jagadish
-                  <span className="block text-sky-100/95 mt-1.5">Gollapalli</span>
-                </h1>
-                <p className="mt-8 text-lg sm:text-xl md:text-[1.35rem] text-slate-200/90 leading-relaxed font-normal max-w-xl ml-auto">
-                  Engineer focused on scalable, data-intensive platforms—Java
-                  & Spring Boot, Go services, React, PostgreSQL, GraphQL, and AWS.
-                  Recent work spans AI-driven ingestion pipelines, reporting, and
-                  operational tooling with a strong lens on reliability and UX.
-                </p>
-              </div>
-            </div>
+          <div className="flex justify-center">
+            <span className="pill-gold">
+              <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />
+              Full-Stack Developer · Java · React · Cloud
+            </span>
           </div>
         </RevealSection>
 
+        <RevealSection className="mt-9">
+          <h1 className="font-display font-extrabold tracking-[-0.04em] leading-[1.02] text-center text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+            <span className="block text-ink">Design. Build.</span>
+            <span className="block text-gold-gradient">
+              Ship reliable systems<span className="text-accent">.</span>
+            </span>
+          </h1>
+        </RevealSection>
+
         <RevealSection className="mt-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+          <div className="flex justify-center">
+            <span className="ring-decor" aria-hidden />
+          </div>
+        </RevealSection>
+
+        <RevealSection className="mt-8">
+          <p className="mx-auto max-w-2xl text-center text-lg sm:text-xl text-ink-muted leading-relaxed">
+            I'm{" "}
+            <span className="text-ink font-semibold">Jagadish Gollapalli</span>—an
+            engineer focused on scalable, data-intensive platforms. Spring Boot
+            and Go services, GraphQL APIs, React product UIs, Postgres, AWS, and
+            AI-driven workflows that ship.
+          </p>
+        </RevealSection>
+
+        <RevealSection className="mt-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#projects" className="btn-gold">
+              Explore Work
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="#contact" className="btn-ghost">
+              Contact Me
+            </a>
+            <a
+              href="https://github.com/jagadishgollapalli"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-accent transition-colors px-3 py-2"
+            >
+              <Download className="h-4 w-4" />
+              View GitHub
+            </a>
+          </div>
+        </RevealSection>
+
+        <RevealSection className="mt-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="group relative rounded-2xl card-premium p-6 md:p-8 motion-safe:transition motion-safe:duration-300 hover:border-accent/35 hover:shadow-glow hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 overflow-hidden"
+                className="group relative rounded-2xl border border-surface-border/70 bg-surface-card/40 backdrop-blur-md px-5 py-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface-card/60 hover:-translate-y-0.5"
               >
-                <div className="absolute left-0 top-4 bottom-4 w-px bg-gradient-to-b from-accent/80 via-accent/20 to-transparent opacity-90" />
-                <p className="font-display font-bold text-3xl md:text-4xl text-accent mb-3 pl-4 tracking-tight">
+                <div className="absolute left-5 top-5 bottom-5 w-px bg-gradient-to-b from-accent/70 via-accent/15 to-transparent" />
+                <p className="font-display font-extrabold text-2xl md:text-[1.65rem] text-accent tracking-tight pl-4">
                   {s.value}
                 </p>
-                <p className="text-base md:text-lg text-ink-muted leading-snug pl-4 group-hover:text-ink-muted/90">
+                <p className="mt-1.5 text-sm md:text-[0.95rem] text-ink-muted leading-snug pl-4">
                   {s.label}
                 </p>
               </div>

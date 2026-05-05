@@ -1,104 +1,123 @@
+import {
+  FaReact,
+  FaNodeJs,
+  FaJava,
+  FaAws,
+  FaDocker,
+  FaGitAlt,
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+  FaAngular,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiSpringboot,
+  SiTailwindcss,
+  SiPostgresql,
+  SiMongodb,
+  SiMysql,
+  SiGraphql,
+  SiRedux,
+  SiApachekafka,
+  SiHasura,
+  SiGo,
+  SiVercel,
+  SiJest,
+} from "react-icons/si";
 import RevealSection from "./RevealSection";
 import SectionHeading from "./SectionHeading";
-import { Cloud, Database, Layers, Terminal, TestTube2 } from "lucide-react";
 
-const groups = [
-  {
-    title: "Languages & runtimes",
-    icon: Terminal,
-    items: ["Java", "JavaScript", "TypeScript", "SQL", "Go"],
-  },
-  {
-    title: "Frameworks & UI",
-    icon: Layers,
-    items: [
-      "Spring Boot",
-      "React.js",
-      "Node.js",
-      "Angular",
-      "GraphQL",
-      "Hasura",
-      "Redux (RTK)",
-      "Redux Saga",
-      "Tailwind CSS",
-      "Chakra UI",
-      "PrimeReact",
-    ],
-  },
-  {
-    title: "Cloud & messaging",
-    icon: Cloud,
-    items: [
-      "AWS (RDS, S3, Lambda, API Gateway, EKS, SES, CloudWatch, Bedrock)",
-      "Kafka",
-      "Docker",
-    ],
-  },
-  {
-    title: "Data & quality",
-    icon: Database,
-    items: [
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Postman",
-      "Mockito",
-      "Jest",
-      "Enzyme",
-      "JUnit",
-    ],
-  },
-  {
-    title: "Practices",
-    icon: TestTube2,
-    items: ["Agile", "Waterfall", "Observability-focused delivery"],
-  },
+const skills = [
+  { name: "Java", Icon: FaJava, color: "#f89820" },
+  { name: "Spring Boot", Icon: SiSpringboot, color: "#6db33f" },
+  { name: "Go", Icon: SiGo, color: "#00ADD8" },
+  { name: "Node.js", Icon: FaNodeJs, color: "#3c873a" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#f7df1e" },
+  { name: "Python", Icon: FaPython, color: "#4584b6" },
+  { name: "React", Icon: FaReact, color: "#61dafb" },
+  { name: "Angular", Icon: FaAngular, color: "#dd0031" },
+  { name: "Redux", Icon: SiRedux, color: "#9d6cdb" },
+  { name: "GraphQL", Icon: SiGraphql, color: "#e535ab" },
+  { name: "Hasura", Icon: SiHasura, color: "#1eb4d4" },
+  { name: "Tailwind", Icon: SiTailwindcss, color: "#38bdf8" },
+  { name: "HTML5", Icon: FaHtml5, color: "#e34f26" },
+  { name: "CSS3", Icon: FaCss3Alt, color: "#1572b6" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "#5294c4" },
+  { name: "MySQL", Icon: SiMysql, color: "#00758f" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#4caf50" },
+  { name: "Kafka", Icon: SiApachekafka, color: "#cbd5e1" },
+  { name: "AWS", Icon: FaAws, color: "#ff9900" },
+  { name: "Docker", Icon: FaDocker, color: "#2496ed" },
+  { name: "Git", Icon: FaGitAlt, color: "#f05032" },
+  { name: "Jest", Icon: SiJest, color: "#c63d14" },
+  { name: "Vercel", Icon: SiVercel, color: "#ffffff" },
 ];
 
 export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative py-20 sm:py-24 px-4 sm:px-6 bg-surface-alt/55 border-y border-surface-border/80"
+      className="relative py-24 sm:py-28 px-4 sm:px-6 border-t border-surface-border/60"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] via-transparent to-transparent pointer-events-none" />
-      <div className="max-w-6xl mx-auto relative">
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-accent/[0.03] via-transparent to-transparent pointer-events-none"
+      />
+      <div className="relative max-w-6xl mx-auto">
         <RevealSection>
           <SectionHeading
-            step="02 — Capabilities"
-            title="Technical skills"
-            subtitle="Stack aligned with production microservices, GraphQL systems, and React-heavy product work."
+            eyebrow="EXPERTISE"
+            title="Core"
+            highlight="Technologies"
+            subtitle="A curated stack aligned with production microservices, GraphQL systems, and React-heavy product work."
           />
         </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          {groups.map((g) => (
-            <RevealSection key={g.title}>
-              <div className="group h-full rounded-2xl card-premium p-6 md:p-7 motion-safe:transition duration-300 hover:border-accent/30 hover:shadow-glow">
-                <div className="flex items-start gap-4 mb-5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent ring-1 ring-accent/25 shadow-innerline">
-                    <g.icon className="h-5 w-5" strokeWidth={2} />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-display font-semibold text-xl text-ink tracking-tight">
-                      {g.title}
-                    </h3>
-                    <div className="mt-2 h-px w-8 bg-gradient-to-r from-accent/60 to-transparent" />
-                  </div>
-                </div>
-                <ul className="flex flex-wrap gap-2">
-                  {g.items.map((item) => (
-                    <li key={item}>
-                      <span className="inline-block rounded-lg border border-surface-border/90 bg-surface/60 px-3.5 py-2 text-sm sm:text-[15px] text-ink-muted font-medium tracking-tight motion-safe:transition group-hover:border-surface-border">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+        <RevealSection>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4">
+            {skills.map(({ name, Icon, color }) => (
+              <div
+                key={name}
+                className="group relative flex flex-col items-center justify-center gap-3 rounded-2xl border border-surface-border/70 bg-surface-card/40 backdrop-blur-md aspect-square p-3 transition-all duration-300 hover:border-accent/40 hover:bg-surface-card/70 hover:-translate-y-1"
+                style={{
+                  "--brand": color,
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(ellipse 70% 60% at 50% 50%, ${color}26, transparent 65%)`,
+                  }}
+                />
+                <Icon
+                  className="relative h-7 w-7 sm:h-9 sm:w-9 transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    color,
+                    filter: `drop-shadow(0 0 12px ${color}55)`,
+                  }}
+                  aria-hidden
+                />
+                <span className="relative text-[10px] sm:text-xs font-medium text-ink-subtle group-hover:text-ink transition-colors text-center leading-tight">
+                  {name}
+                </span>
               </div>
-            </RevealSection>
-          ))}
-        </div>
+            ))}
+          </div>
+        </RevealSection>
+
+        <RevealSection className="mt-10">
+          <p className="text-center text-sm sm:text-base text-ink-subtle">
+            Also working with{" "}
+            <span className="text-ink-muted">
+              Spring Security · JPA · Hibernate · RTK Query · Saga · Chakra UI ·
+              PrimeReact · Bedrock · S3 · Lambda · API Gateway · EKS · CloudWatch
+            </span>
+          </p>
+        </RevealSection>
       </div>
     </section>
   );
