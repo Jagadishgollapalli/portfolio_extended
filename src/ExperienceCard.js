@@ -5,9 +5,9 @@ import SectionHeading from "./SectionHeading";
 const roles = [
   {
     company: "Triplemeter Inc",
-    location: "TX",
-    title: "Software Engineer",
-    period: "March 2025 – Present",
+    location: "USA",
+    title: "Senior Software Engineer",
+    period: "March 2025 – May 2026",
     highlights: [
       "Decoupled AI ingestion across Go and Python—Go for orchestration, uploads, and inbox entry points; Python focused on extraction—for easier evolution in production.",
       "Led Activity Reporting and Inventory reporting expansion: modeling, validation, and secure persistence on Postgres for AI-assisted workflows; coordinated offshore engineers for production readiness.",
@@ -19,9 +19,9 @@ const roles = [
   },
   {
     company: "CRST International",
-    location: "TX",
-    title: "Full Stack Java Developer",
-    period: "May 2024 – January 2025",
+    location: "USA",
+    title: "Software Developer",
+    period: "May 2024 – Feb 2025",
     highlights: [
       "Built Spring Boot REST services (Spring Security, Spring Data JPA, Hibernate); improved API response times ~20% through query and payload tuning.",
       "Secured APIs with Microsoft SSO via Spring Security and OAuth2; deployed containerized microservices on AWS EC2.",
@@ -33,7 +33,7 @@ const roles = [
   {
     company: "Juhomi Ltd",
     location: "India",
-    title: "Java Developer",
+    title: "Software Engineer",
     period: "June 2019 – December 2022",
     highlights: [
       "Worked across agile delivery with frontend and DevOps partners; used Java 8 lambdas, functional interfaces, and streams for maintainability.",

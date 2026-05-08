@@ -12,7 +12,7 @@ const traits = [
 
 const quickFacts = [
   { Icon: MapPin, label: "Based In", value: "Texas, USA", sub: "Remote / Hybrid" },
-  { Icon: Briefcase, label: "Experience", value: "6+ Years", sub: "Production engineering" },
+  { Icon: Briefcase, label: "Experience", value: "7 Years", sub: "Production engineering" },
   {
     Icon: GraduationCap,
     label: "Education",

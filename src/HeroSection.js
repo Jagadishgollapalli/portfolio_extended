@@ -2,7 +2,7 @@ import { ArrowRight, Sparkles, Download } from "lucide-react";
 import RevealSection from "./RevealSection";
 
 const stats = [
-  { value: "6+", label: "Years shipping production systems" },
+  { value: "7", label: "Years shipping production systems" },
   { value: "End-to-end", label: "APIs, UIs, data, and cloud" },
   { value: "Java · Go · React", label: "Cross-stack engineering" },
 ];
@@ -31,7 +31,7 @@ export default function HeroSection() {
           <div className="flex justify-center">
             <span className="pill-gold">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />
-              Full-Stack Developer · Java · React · Cloud
+              AI Full Stack Developer · Java · Go · React · Cloud
             </span>
           </div>
         </RevealSection>
